@@ -4,8 +4,14 @@
 # density calculated from those values.
 
 
-# Your code goes here!
 def population_density(population, land_area):
+    '''
+    Return population density.
+
+    :param population:
+    :param land_area:
+    :return: population density.
+    '''
     return population / land_area
 
 
@@ -20,6 +26,8 @@ print("expected result: {}..., actual result: {}".format(expected_result2, test2
 
 # DEFINING FUNCTIONS II
 # Write your code for readable_timedelta here.
+
+
 def readable_timedelta(days):
     ''' returns a str of days in delta format.
 
@@ -42,22 +50,24 @@ bank_balance = 104.39
 if phone_balance < 10:
     phone_balance += 10
     bank_balance -= 10
+
+
 print(phone_balance)
 print(bank_balance)
 
 #Second Example
-
 #change the number to experiment!
+
 number = 145346334
-#number = 5 #3 sir
+
 if number % 2 == 0:
     print("The number " + str(number) + " is even.")
 else:
     print("The number " + str(number) + " is odd.")
 
 #Third Example
-
 #change the age to experiment with the pricing
+
 age = 35
 
 #set the age limits for bus fares
@@ -78,7 +88,7 @@ elif age >= senior_from_age:
     ticket_price = concession_ticket
 else:
     ticket_price = adult_ticket
-message = "Somebody who is {} years old will pay ${} to ride the bus.".format(age,ticket_price)
+message = "Somebody who is {} years old will pay ${} to ride the bus.".format(age, ticket_price)
 print(message)
 
 
@@ -90,7 +100,7 @@ def which_prize(points):
         prize = "wafer-thin mint"
     elif points >= 181:
         prize = "a penguin"
-    
+
     if prize:
         return "Congratulations! You have won a {}!".format(prize)
     else:
