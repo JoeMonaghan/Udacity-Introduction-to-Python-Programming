@@ -1,3 +1,8 @@
+from countries import country_list # Note: since the list is so large, it's tidier
+                                   # to put in in a separate file. We'll learn more
+                                   # about "import" later on.
+
+
 #REORGAINIZING CODE
 def check_answer(my_answer, actual_answer):
     '''
@@ -82,7 +87,49 @@ def get_squares(limit):
     return squares
 
 
+# Users by Country
+def get_country_occurrence(country_list):
+    country_counts = {}
+
+    for country in country_list:
+        # If the country isn't in the dict already, add it and set the value to 1
+        # If the country is in the dict, increment its value by one to keep count
+        if country_counts.get(country) is None:
+            country_counts[country] = 1
+        else:
+            country_counts[country] += 1
+    return country_counts
+
+#Quiz: Prolific Year
+def most_prolific(discography):
+
+    count_list = dict()
+    years = list()
+    top = 0
+
+    for album, year in discography.items():
+        if year not in count_list:
+            count_list[year] = 1
+        else:
+            count_list[year] += 1
+
+        # get the year key with the highest value
+        if count_list[year] > top:
+            top = count_list[year]
+
+    # get all the years that have equally top occurrence's
+    for year, number_of_occurrences in count_list.items():
+        if number_of_occurrences == top:
+            years.append(year)
+
+    if len(years) > 1:
+        return years
+    return years[0]
+
 def main():
+
+
+
 
     # test #REORGAINIZING CODE
     my_answers =[12, 3, 45,  5, 6, 6]
@@ -95,38 +142,31 @@ def main():
     elements = [1, 33, 4, 4, 55, 55, 6, 3, 1, 9, 34]
     print(remove_duplicates(elements))
 
-    temp = dict(name='joe', age=25)
-
-    temp['home'] = 'IRE'
-
-    name = temp.get('name', default='Unknown name')
-
-    print(temp)
-
-    if 'home' in temp:
-        print('I have a home')
-        print(name)
-
-
     squares = get_squares(25)
     print(squares)
 
+    # use the imported country list and return dict with
+    # the times each country is contained within the list.
+    countries_occurences = get_country_occurrence(country_list)
+    print(countries_occurences)
+
+    # Test Quiz Prolific Year
+    Beatles_Discography = {"Please Please Me": 1963, "With the Beatles": 1963,
+                           "A Hard Day's Night": 1964, "Beatles for Sale": 1964, "Twist and Shout": 1964,
+                           "Help": 1965, "Rubber Soul": 1965, "Revolver": 1966,
+                           "Sgt. Pepper's Lonely Hearts Club Band": 1967,
+                           "Magical Mystery Tour": 1967, "The Beatles": 1968,
+                           "Yellow Submarine": 1969, 'Abbey Road': 1969,
+                           "Let It Be": 1970}
+
+    for album_title in Beatles_Discography:
+        print("title: {}, year: {}".format(album_title, Beatles_Discography[album_title]))
+
+    year_years = most_prolific(Beatles_Discography)
+    print('The Beatles most prolific year/s was {}'.format(year_years))
+
 if __name__ == '__main__':
     main()
-
-from countries import country_list # Note: since the list is so large, it's tidier
-                                   # to put in in a separate file. We'll learn more
-                                   # about "import" later on.
-
-country_counts = {}
-for country in country_list:
-    #todo: insert countries into the country_count dict.
-    # If the country isn't in the dict already, add it and set the value to 1
-    # If the country is in the dict, increment its value by one to keep count
-    if country_counts.get(country) is None:
-        country_counts[country] = 1
-    else:
-        country_counts[country] += 1
 
 
 
